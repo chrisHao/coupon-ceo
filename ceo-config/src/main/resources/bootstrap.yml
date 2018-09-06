@@ -1,0 +1,26 @@
+ceo:
+  username: chris
+  password: Everybody2018
+  config:
+    git:
+      default-label: master
+      password: kinglord2010
+      search-paths: config
+      uri: https://gitee.com/chris_k/coupon-ceo.git
+      username: haokang207@126.com
+server:
+  port: 6002
+spring:
+  application:
+    name: ceo-config
+  cloud:
+    config:
+      server:
+        git:
+          default-label: ${ceo.config.git.default-label}
+          password: ${ceo.config.git.password}
+          search-paths: ${ceo.config.git.search-paths}
+          uri: ${ceo.config.git.uri}
+          username: ${ceo.config.git.username}
+        default-profile: ${spring.profiles.active}
+        bootstrap: true # 从远程仓库加载配置
